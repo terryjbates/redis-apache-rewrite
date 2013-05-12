@@ -11,9 +11,9 @@ sys.setdefaultencoding("utf-8")
 r = redis.Redis(host='localhost', port=6379, db=0)
 
 # Import the file with our redirects
-rewrite_file = "/usr/local/apache2/conf.d/foomap.txt"
+rewrite_file = "foomap.txt"
 
-# Read in the contents of admissionmap.txt
+# Read in the contents of foomap.txt
 my_file = open(rewrite_file, 'r')
 
 # Create a pattern of lines we want to avoid.
@@ -27,4 +27,4 @@ for line in my_file:
         source = unicode(source)
         target = unicode(target)
         print "source: %s target: %s" % (source,target)
-        r.set(source,target)
+        r.set('foomap:' + source,target)
