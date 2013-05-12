@@ -23,7 +23,7 @@ Presume the web server URL users navigate to is "http://company.com". For an exa
 
 We start out by telling Apache that a text file "foomap.txt" will be referenced via "foomap" inside of the configuration. We then have a very generic "RewriteRule." If a request matches the specified pattern, Apache will attempt to process the rewrite using the contents of "foomap." If there is no match, Apache will rewrite to a default of "http://www.company.com/index.html." The options at the end, in order, indicate no hexcode escaping, to stop rewriting process immediately, and force and external redirect.
 
-Let "head" the contents of "foomap.txt":
+Let's "head" the contents of "foomap.txt":
 
     FAQs http://company.com/frequently-asked-questions
     finance http://finance.company.com/
