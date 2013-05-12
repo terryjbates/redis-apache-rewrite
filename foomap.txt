@@ -1,0 +1,4 @@
+FAQs http://company.com/frequently-asked-questions
+finance http://finance.company.com/
+hr http://company.com/staffing/human-resources
+consulting http://company.com/consulting
