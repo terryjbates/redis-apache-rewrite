@@ -92,7 +92,7 @@ We make a small modification to the input, so we can prepend a key prefix before
     RewriteMap foomap prg:/path/to/script/redis-read-keys.py
     RewriteRule ^/foo/(.*)$  ${foomap:$1|http://localhost/foo/index.html/} [NE,L,R]
 
-It is now possible to manage rewrites by simply doing Redis command line operations. There are some bonuses to using Redis
+It is now possible to manage rewrites by simply doing Redis command line operations. There are added benefits to using Redis and not just shoving these items into a text file or DBM. 
 
 Statistics collecting
 =====================
