@@ -44,7 +44,7 @@ Text files and RewriteMap
 =========================
 One problem with using text files with RewriteMap is that the file is serially read when Apache is looking for a match. This becomes end-user noticeable if the Rewrite that maps to their request is at the tail end of the file. The more entries in the RewriteMap, the longer the processing will take if the matching line is at the tail-end of the file. If there are more than few dozens lines, the behavior becomes less performant.
 
-Since RewriteMap can use a script or a DBM file, these seem like viable, and faster, alternatives. Apache used to come baked with a Perl script to generate DBM files to for use in RewriteMaps, but that seems to have removed from distributions. We can use Python to do something similar 
+Since RewriteMap can use a script or a DBM file, these seem like viable, and faster, alternatives. Apache used to come baked with a Perl script to generate DBM files to for use in RewriteMaps, but the utility seems to no longer be bundled with Apache distributions. We can use Python to do something similar 
 View [this gist](https://gist.github.com/terryjbates/3801757 "Title") for details.
 
 The DBM approaches makes the rewriting speed the same for all entries in the file, via the hashing, but requires a full-on regeneration every time you want to add a new entry if you are using the above-described scripts to do so. (In fairness, there may be ways to redo DBM, in-place, that I am not aware of).
