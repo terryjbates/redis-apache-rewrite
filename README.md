@@ -105,6 +105,6 @@ That said, if stats are collected on rewrite requests, some extra scripting coul
 Rewrite Expiration
 ==================
 
-Rather than having a human have to remember to edit a file, simply give the keys an expire date, after or during a SET operation. No more reliance on human curation of humungous ".conf" files. If any site that is being redirected to should only have rewrites for certain period, give the keys an expiration, then forget about it.
+Rather than having a human have to remember to edit a file, simply give the keys an expire date, after or during a SET operation. No more reliance on human curation of humungous ".conf" files. If any site that is being redirected to should only have rewrites for certain period, give the keys an expiration at the outset, then let Redis do the job of expiry.
 
 
