@@ -14,7 +14,7 @@ This is OK for a small amount of directives, but if you start managing several d
 
 Apache RewriteMap
 =================
-Apache comes with a "RewriteMap" directive that enables options to ease dealing with rewrites. You can read in text files, DBM, or script output to determine what to rewrite to.
+Apache comes with a [RewriteMap directive](http://httpd.apache.org/docs/current/rewrite/rewritemap.html "Title") that enables options to ease dealing with rewrites. You can read in text files, DBM, or script output to determine what to rewrite to.
 
 Presume the web server URL users navigate to is "http://company.com". For an example of using "RewriteMap" with a text file we start in httpd.conf with the following directives:
 
