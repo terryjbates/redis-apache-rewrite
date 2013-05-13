@@ -108,3 +108,7 @@ Rewrite Expiration
 Rather than having a human have to remember to edit a file, simply give the keys an expire date, after or during a SET operation. No more reliance on human curation of humungous ".conf" files. If any site that is being redirected to should only have rewrites for certain period, give the keys an expiration at the outset, then let Redis do the job of expiry.
 
 
+TODO
+====
+
+One way to envision greater flexibility for this, would be not having to edit httpd.conf to add new RewriteMaps. It may be the case that a general RewriteRule is configured, and the logic of breaking this up would be put onto the invoked script. It could take the first grouping as the "prefix" for a key, then use the second (or combo of subsequent) groupings to figure out what the rest of a keyname. It is suggested that the script that is used for RewriteMap be as simple as possible; if it is slow to process, the rewriting will be slow as well. 
