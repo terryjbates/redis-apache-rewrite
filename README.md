@@ -16,27 +16,27 @@ Apache RewriteMap
 =================
 Apache comes with a [RewriteMap directive](http://httpd.apache.org/docs/current/rewrite/rewritemap.html "Title") that enables options to ease dealing with rewrites. You can read in text files, DBM, or script output to determine what to rewrite to.
 
-Presume the web server URL users navigate to is "http://company.com". For an example of using "RewriteMap" with a text file we start in httpd.conf with the following directives:
+Presume the web server URL users navigate to is "http://fake-company.com". For an example of using "RewriteMap" with a text file we start in httpd.conf with the following directives:
 
     RewriteMap foomap txt:/usr/local/apache2/conf.d/foomap.txt
-    RewriteRule ^/foo/(.*)$  ${foomap:$1|http://www.company.com/index.html} [NE,L,R]
+    RewriteRule ^/foo/(.*)$  ${foomap:$1|http://www.fake-company.com/index.html} [NE,L,R]
 
-We start out by telling Apache that a text file "foomap.txt" will be referenced via "foomap" inside of the configuration. We then have a very generic "RewriteRule." If a request matches the specified pattern, Apache will attempt to process the rewrite using the contents of "foomap." If there is no match, Apache will rewrite to a default of "http://www.company.com/index.html." The options at the end, in order, indicate no hexcode escaping, to stop rewriting process immediately, and force and external redirect.
+We start out by telling Apache that a text file "foomap.txt" will be referenced via "foomap" inside of the configuration. We then have a very generic "RewriteRule." If a request matches the specified pattern, Apache will attempt to process the rewrite using the contents of "foomap." If there is no match, Apache will rewrite to a default of "http://www.fake-company.com/index.html." The options at the end, in order, indicate no hexcode escaping, to stop rewriting process immediately, and force and external redirect.
 
 Let's "head" the contents of "foomap.txt":
 
-    FAQs http://company.com/frequently-asked-questions
-    finance http://finance.company.com/
-    hr http://company.com/staffing/human-resources
-    consulting http://company.com/consulting
+    FAQs http://fake-company.com/frequently-asked-questions
+    finance http://finance.fake-company.com/
+    hr http://fake-company.com/staffing/human-resources
+    consulting http://fake-company.com/consulting
 
 An example interaction:
 
-1. Users navigates to http://company.com/foo/hr
+1. Users navigates to http://fake-company.com/foo/hr
 2. The RewriteRule matches this URL. The matched text will be "hr" and this will be captured in the backreference of "$1."
 3. Apache will attempt to find "hr" contained within the "foomap" RewriteMap, which refers to the underlying "foomap.txt" text file.
-4. There is a "hit" in this file, and value seen is "http://company.com/staffing/human-resources".
-5. The user will be redirected to "http://company.com/staffing/human-resources" with the Rewrite options indicated at the end of the RewriteRule.
+4. There is a "hit" in this file, and value seen is "http://fake-company.com/staffing/human-resources".
+5. The user will be redirected to "http://fake-company.com/staffing/human-resources" with the Rewrite options indicated at the end of the RewriteRule.
 
 This approach is pretty decent. If you get tossed a bunch of Rewrites in spreadsheet, it will be trivial to sed/awk the input and chug out a RewriteMap. 
 
